@@ -1,0 +1,252 @@
+{
+  "users": [
+    {
+      "id": "usr_alice",
+      "email": "alice@karmas.io",
+      "name": "Alice Vance",
+      "yearsOfExperience": 3,
+      "onboardingStatus": "approved",
+      "linkedinVerified": true,
+      "companyVerified": false,
+      "disputesUsed": 1,
+      "disputeResetDate": "2026-01-01T00:00:00.000Z",
+      "createdAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "usr_bob",
+      "email": "bob@karmas.io",
+      "name": "Bob Builder",
+      "yearsOfExperience": 2,
+      "onboardingStatus": "approved",
+      "linkedinVerified": false,
+      "companyVerified": false,
+      "disputesUsed": 0,
+      "disputeResetDate": "2026-01-01T00:00:00.000Z",
+      "createdAt": "2024-02-01T00:00:00.000Z"
+    },
+    {
+      "id": "usr_carol",
+      "email": "carol@karmas.io",
+      "name": "Carol Chen",
+      "yearsOfExperience": 7,
+      "onboardingStatus": "approved",
+      "linkedinVerified": true,
+      "companyVerified": true,
+      "disputesUsed": 0,
+      "disputeResetDate": "2026-01-01T00:00:00.000Z",
+      "createdAt": "2024-03-01T00:00:00.000Z"
+    },
+    {
+      "id": "usr_lu4f81v",
+      "email": "yagyasharma113@gmail.com",
+      "name": "yagyasharma113",
+      "yearsOfExperience": 0,
+      "onboardingStatus": "pending",
+      "linkedinVerified": false,
+      "companyVerified": false,
+      "disputesUsed": 0,
+      "disputeResetDate": "2026-07-16T12:59:21.670Z",
+      "createdAt": "2026-07-16T12:59:21.670Z"
+    }
+  ],
+  "organizations": [
+    {
+      "id": "org_bytelabs",
+      "name": "ByteLabs Solutions",
+      "industry": "Technology",
+      "employeeCount": 120,
+      "orgStability": 7.4,
+      "tier": "mid",
+      "createdAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "org_pixelcraft",
+      "name": "PixelCraft Interactive",
+      "industry": "Technology",
+      "employeeCount": 210,
+      "orgStability": 3.9,
+      "tier": "mid",
+      "createdAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "org_devscale",
+      "name": "DevScale Corp",
+      "industry": "Technology",
+      "employeeCount": 75,
+      "orgStability": 5,
+      "tier": "mid",
+      "createdAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "org_nexushealth",
+      "name": "Nexus Health",
+      "industry": "Healthcare",
+      "employeeCount": 1200,
+      "orgStability": 10,
+      "tier": "enterprise",
+      "createdAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "org_finflow",
+      "name": "FinFlow Capital",
+      "industry": "Finance",
+      "employeeCount": 35,
+      "orgStability": 5,
+      "tier": "startup",
+      "createdAt": "2024-01-01T00:00:00.000Z"
+    }
+  ],
+  "employments": [
+    {
+      "id": "emp_alice_bytelabs",
+      "userId": "usr_alice",
+      "orgId": "org_bytelabs",
+      "title": "Frontend Engineer",
+      "startDate": "2024-01-10T00:00:00.000Z",
+      "endDate": "2025-06-15T00:00:00.000Z",
+      "isVerified": true,
+      "createdAt": "2024-01-10T00:00:00.000Z"
+    },
+    {
+      "id": "emp_alice_pixelcraft",
+      "userId": "usr_alice",
+      "orgId": "org_pixelcraft",
+      "title": "React Developer",
+      "startDate": "2023-05-01T00:00:00.000Z",
+      "endDate": "2023-12-20T00:00:00.000Z",
+      "isVerified": true,
+      "createdAt": "2023-05-01T00:00:00.000Z"
+    },
+    {
+      "id": "emp_alice_devscale",
+      "userId": "usr_alice",
+      "orgId": "org_devscale",
+      "title": "Senior Frontend Engineer",
+      "startDate": "2025-08-01T00:00:00.000Z",
+      "endDate": null,
+      "isVerified": true,
+      "createdAt": "2025-08-01T00:00:00.000Z"
+    },
+    {
+      "id": "emp_carol_nexus",
+      "userId": "usr_carol",
+      "orgId": "org_nexushealth",
+      "title": "Backend Engineer",
+      "startDate": "2022-03-01T00:00:00.000Z",
+      "endDate": "2024-12-31T00:00:00.000Z",
+      "isVerified": true,
+      "createdAt": "2022-03-01T00:00:00.000Z"
+    }
+  ],
+  "evaluations": [
+    {
+      "id": "ev_1",
+      "employmentId": "emp_alice_bytelabs",
+      "evaluatorId": "usr_bob",
+      "employeeId": "usr_alice",
+      "skillScore": 9,
+      "reliabilityScore": 9,
+      "integrityScore": 10,
+      "rawMetadata": {
+        "managerTenureMonths": 18,
+        "teamSize": 8,
+        "reviewContext": "End of project cycle"
+      },
+      "status": "active",
+      "visibilityDate": "2025-09-13T00:00:00.000Z",
+      "isAnonymous": false,
+      "createdAt": "2025-06-20T00:00:00.000Z"
+    },
+    {
+      "id": "ev_2",
+      "employmentId": "emp_alice_bytelabs",
+      "evaluatorId": "usr_carol",
+      "employeeId": "usr_alice",
+      "skillScore": 8,
+      "reliabilityScore": 9,
+      "integrityScore": 9,
+      "rawMetadata": {
+        "managerTenureMonths": 12,
+        "teamSize": 8,
+        "reviewContext": "Annual review"
+      },
+      "status": "active",
+      "visibilityDate": "2025-09-13T00:00:00.000Z",
+      "isAnonymous": true,
+      "createdAt": "2025-06-25T00:00:00.000Z"
+    },
+    {
+      "id": "ev_3",
+      "employmentId": "emp_alice_pixelcraft",
+      "evaluatorId": "usr_bob",
+      "employeeId": "usr_alice",
+      "skillScore": 4,
+      "reliabilityScore": 5,
+      "integrityScore": 4,
+      "rawMetadata": {
+        "managerTenureMonths": 3,
+        "teamSize": 5,
+        "reviewContext": "Project wrap-up"
+      },
+      "status": "active",
+      "visibilityDate": "2024-03-20T00:00:00.000Z",
+      "isAnonymous": false,
+      "createdAt": "2023-12-22T00:00:00.000Z"
+    },
+    {
+      "id": "ev_4",
+      "employmentId": "emp_alice_devscale",
+      "evaluatorId": "usr_carol",
+      "employeeId": "usr_alice",
+      "skillScore": 9,
+      "reliabilityScore": 8,
+      "integrityScore": 9,
+      "rawMetadata": {
+        "managerTenureMonths": 24,
+        "teamSize": 12,
+        "reviewContext": "Peer check-in"
+      },
+      "status": "pending_visibility",
+      "visibilityDate": "2026-11-01T00:00:00.000Z",
+      "isAnonymous": false,
+      "createdAt": "2026-07-01T00:00:00.000Z"
+    }
+  ],
+  "disputes": [
+    {
+      "id": "disp_1",
+      "evaluationId": "ev_3",
+      "userId": "usr_alice",
+      "reason": "The reviewer was only my manager for 3 months and the score does not reflect my actual performance. They had no context about my full contribution.",
+      "status": "rejected",
+      "appealReason": null,
+      "createdAt": "2024-01-05T00:00:00.000Z",
+      "resolvedAt": "2026-07-14T17:50:05.959Z"
+    }
+  ],
+  "reputationSnapshots": [],
+  "reviewRequests": [
+    {
+      "id": "rr_nyd9el0",
+      "requesterId": "usr_alice",
+      "targetId": "usr_lu4f81v",
+      "employmentId": "emp_alice_bytelabs",
+      "status": "pending",
+      "token": "14tsdynjuwgx16vkhy21fk",
+      "expiresAt": "2026-07-23T12:59:21.670Z",
+      "createdAt": "2026-07-16T12:59:21.670Z"
+    }
+  ],
+  "recruiterApiKeys": [
+    {
+      "id": "rk_4zbxvmr",
+      "companyName": "ByteLabs Recruiting",
+      "contactEmail": "hr@bytelabs.com",
+      "apiKey": "karmas_1naydoxkvxvka8es2id7ld",
+      "tier": "trial",
+      "requestsUsed": 3,
+      "requestLimit": 100,
+      "createdAt": "2026-07-14T18:02:32.872Z"
+    }
+  ]
+}

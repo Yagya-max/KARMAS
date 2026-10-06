@@ -1,0 +1,126 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                  String              @id @default(cuid())
+  email               String              @unique
+  name                String
+  yearsOfExperience   Int                 @default(0) // 0–10 accepted
+  onboardingStatus    String              @default("pending") // "pending" | "approved" | "rejected"
+  linkedinVerified    Boolean             @default(false)
+  companyVerified     Boolean             @default(false)
+  disputesUsed        Int                 @default(0)
+  disputeResetDate    DateTime            @default(now())
+  createdAt           DateTime            @default(now())
+
+  employments         Employment[]
+  givenEvaluations    Evaluation[]        @relation("Evaluator")
+  receivedEvaluations Evaluation[]        @relation("Employee")
+  reputationSnapshots ReputationSnapshot[]
+  disputes            Dispute[]
+  reviewRequestsSent  ReviewRequest[]     @relation("Requester")
+  reviewRequestsTarget ReviewRequest[]    @relation("Target")
+}
+
+model Organization {
+  id            String       @id @default(cuid())
+  name          String       @unique
+  industry      String       // "Technology" | "Finance" | "Healthcare" | etc.
+  employeeCount Int
+  orgStability  Float        @default(5.0) // 1–10, computed from avg tenure, shown to users
+  tier          String       @default("mid") // "startup" (<50), "mid" (50-500), "enterprise" (>500)
+  createdAt     DateTime     @default(now())
+
+  employments   Employment[]
+}
+
+model Employment {
+  id          String      @id @default(cuid())
+  userId      String
+  user        User        @relation(fields: [userId], references: [id])
+  orgId       String
+  org         Organization @relation(fields: [orgId], references: [id])
+  title       String
+  startDate   DateTime
+  endDate     DateTime?   // Nullable — null means current employment
+  isVerified  Boolean     @default(false)
+  createdAt   DateTime    @default(now())
+
+  evaluations Evaluation[]
+
+  @@unique([userId, orgId, startDate])
+}
+
+model Evaluation {
+  id               String    @id @default(cuid())
+  employmentId     String
+  employment       Employment @relation(fields: [employmentId], references: [id])
+  evaluatorId      String
+  evaluator        User      @relation("Evaluator", fields: [evaluatorId], references: [id])
+  employeeId       String
+  employee         User      @relation("Employee", fields: [employeeId], references: [id])
+
+  skillScore       Float
+  reliabilityScore Float
+  integrityScore   Float
+
+  rawMetadata      Json      // { managerTenureMonths, teamSize, reviewContext }
+  status           String    @default("active") // "active" | "disputed" | "nullified" | "pending_visibility"
+  visibilityDate   DateTime  // when this review becomes public
+  isAnonymous      Boolean   @default(false)
+  createdAt        DateTime  @default(now())
+
+  disputes         Dispute[]
+}
+
+model Dispute {
+  id           String     @id @default(cuid())
+  evaluationId String
+  evaluation   Evaluation @relation(fields: [evaluationId], references: [id])
+  userId       String
+  user         User       @relation(fields: [userId], references: [id])
+  reason       String
+  status       String     @default("pending") // "pending" | "approved" | "rejected" | "appealed"
+  appealReason String?
+  createdAt    DateTime   @default(now())
+  resolvedAt   DateTime?
+}
+
+model ReviewRequest {
+  id          String   @id @default(cuid())
+  requesterId String
+  requester   User     @relation("Requester", fields: [requesterId], references: [id])
+  targetId    String
+  target      User     @relation("Target", fields: [targetId], references: [id])
+  employmentId String
+  status      String   @default("pending") // "pending" | "accepted" | "declined" | "completed"
+  token       String   @unique
+  expiresAt   DateTime
+  createdAt   DateTime @default(now())
+}
+
+model ReputationSnapshot {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id])
+  dimensions   Json     // { skill, reliability, integrity, overall }
+  version      Int      @default(1)
+  calculatedAt DateTime @default(now())
+}
+
+model RecruiterAPIKey {
+  id           String   @id @default(cuid())
+  companyName  String
+  contactEmail String
+  apiKey       String   @unique
+  tier         String   @default("trial") // "trial" | "standard" | "premium"
+  requestsUsed Int      @default(0)
+  requestLimit Int      @default(100)
+  createdAt    DateTime @default(now())
+}
